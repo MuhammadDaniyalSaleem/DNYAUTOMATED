@@ -1,0 +1,23 @@
+DNYAUTOMATED V4.2 FIX
+
+Fix applied for the broken-looking homepage shown in the supplied screenshot.
+Root cause addressed: the redesigned V4 homepage used new V4 classes while the browser/static layer could continue serving the old style.css URL from cache. This made new workflow/layout components appear as raw stacked text.
+
+Changes:
+- New unique CSS asset: agency/static/agency/css/style-v4.css
+- Base template now loads style-v4.css?v=4.2.1
+- JavaScript URL also versioned to avoid stale cache
+- Defensive display/grid rules added for V4 homepage components
+- Python source compile validation passed
+- ZIP integrity checked
+
+On your laptop:
+1. Stop the old Django server.
+2. Delete/replace the old project folder with this extracted folder.
+3. Activate venv.
+4. Run: python manage.py runserver
+5. Open the site in browser and press Ctrl+F5 once.
+
+Note: Full Django runtime check could not be executed in the build environment because package download/network access was unavailable. Python source compilation was successful.
+
+V4.9 fixes: forced services strip styling, styled case-study CTA, bumped CSS/JS cache version.
