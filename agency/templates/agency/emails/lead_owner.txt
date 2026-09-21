@@ -1,0 +1,17 @@
+New {{ kind_label }} received on DNYAUTOMATED
+Reference: {{ lead.reference }}
+Name: {{ lead.name }}
+Email: {{ lead.email }}
+Phone: {{ lead.phone|default:"—" }}
+Company: {{ lead.company|default:"—" }}
+Country: {{ lead.country|default:"—" }}
+Service: {{ lead.service|default:"—" }}
+Budget: {{ lead.budget|default:"—" }}
+Timeline: {{ lead.timeline|default:"—" }}
+Tools: {{ lead.tools|default:"—" }}
+Source: {{ lead.source|default:"—" }}
+
+Message:
+{{ lead.message }}
+
+Open the DNY dashboard/admin to manage this lead.

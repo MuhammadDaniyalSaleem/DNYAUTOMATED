@@ -1,0 +1,76 @@
+{% extends 'agency/base.html' %}
+{% load static %}{% block content %}
+<section class="v4hero hero-final">
+  <div class="hero-glow"></div>
+  <div class="v4hero-copy reveal">
+    <div class="eyebrow">DIGITAL NEURAL YIELD · AI AUTOMATION & CUSTOM SOFTWARE</div>
+    <h1>Automation that fits<br><span>how your business works.</span></h1>
+    <p class="hero-lead">We design practical AI automation, connected workflows and custom software that reduce repetitive work without forcing your team into a generic system.</p>
+    <div class="actions"><a class="btn" href="{% url 'audit' %}?source=home-hero">Get a Free Automation Audit</a><a class="ghost" href="{% url 'case_studies' %}">See Our Work</a></div>
+    <div class="hero-proof"><div><b>01</b><span>Map the process</span></div><div><b>02</b><span>Connect the tools</span></div><div><b>03</b><span>Build & deploy</span></div></div>
+  </div>
+  <div class="automation-canvas reveal hero-workflow" aria-label="Example automation workflow">
+    <div class="canvas-top"><span><i></i> WORKFLOW EXAMPLE</span><b>Lead Operations</b></div>
+    <div class="canvas-flow">
+      <div class="flow-card"><small>TRIGGER</small><strong>New enquiry</strong><span>Website / form</span></div>
+      <div class="flow-link"><b>→</b></div>
+      <div class="flow-card active"><small>AI + LOGIC</small><strong>Qualify & route</strong><span>Intent + priority</span></div>
+      <div class="flow-link"><b>→</b></div>
+      <div class="flow-card"><small>ACTION</small><strong>CRM + follow-up</strong><span>Connected automatically</span></div>
+    </div>
+    <div class="workflow-summary"><span><i></i> Workflow connected</span><span>Human review where needed</span></div>
+  </div>
+</section>
+<section class="techrail"><span>BUILT WITH</span><b>Python</b><b>Django</b><b>n8n</b><b>AI APIs</b><b>Google Workspace</b><b>REST APIs</b><a href="{% url 'integrations' %}">View integrations →</a></section>
+
+<section class="v4section problem-editorial">
+ <div class="section-kicker"><span>01</span><div class="eyebrow">THE OPPORTUNITY</div></div>
+ <div class="opportunity-head"><div><h2>Stop moving information<br>between disconnected tools.</h2></div><div class="opportunity-copy"><p>Repeated data entry, manual follow-ups and disconnected reporting slow teams down. We connect the steps so information moves automatically, with review points where people still matter.</p><a class="textlink" href="{% url 'audit' %}?source=home-problem">Show us your manual process <span>→</span></a></div></div>
+ <div class="process-compare" aria-label="Manual versus automated workflow"><div class="process-card manual"><div class="process-card-head"><small>BEFORE · MANUAL</small><b>Too many handoffs</b></div><div class="process-line"><span><small>01</small>New request</span><i>→</i><span><small>02</small>Copy data</span><i>→</i><span><small>03</small>Spreadsheet</span><i>→</i><span><small>04</small>Follow-up</span><i>→</i><span><small>05</small>Report</span></div></div><div class="compare-bridge"><span>Automate the handoffs</span><i>↓</i></div><div class="process-card automated"><div class="process-card-head"><small>AFTER · AUTOMATED</small><b>One connected workflow</b></div><div class="process-line"><span><small>01</small>New request</span><i>→</i><span><small>02</small>Extract + validate</span><i>→</i><span><small>03</small>Update system</span><i>→</i><span><small>04</small>Notify team</span><i>→</i><span><small>05</small>Dashboard</span></div></div></div>
+</section>
+
+<section class="v4section services-editorial">
+ <div class="section-kicker"><span>02</span><div class="eyebrow">CORE CAPABILITIES</div></div>
+ <div class="section-title-row"><h2>From one workflow to a complete business system.</h2><a class="ghost" href="{% url 'services' %}">Explore all services</a></div>
+ <div class="service-feature-grid">{% for s in services|slice:':4' %}<a class="service-feature reveal" href="{% url 'service_detail' s.slug %}"><div class="service-num">0{{forloop.counter}}</div><div><small>{{s.category}}</small><h3>{{s.name}}</h3><p>{{s.desc}}</p></div><b>↗</b></a>{% endfor %}</div>
+</section>
+
+<section class="workflow-stage">
+ <div class="workflow-copy"><div class="eyebrow">CONNECTED AUTOMATION</div><h2>One process. Every step connected.</h2><p>Automation is most useful when the handoffs disappear. We connect triggers, business logic, AI, people and the systems that hold your data.</p><a class="textlink" href="{% url 'solutions' %}">Explore automation solutions →</a></div>
+ <div class="workflow-map"><div class="map-row"><div class="map-node"><small>TRIGGER</small><b>New lead</b></div><span>→</span><div class="map-node accent"><small>AI</small><b>Qualify</b></div><span>→</span><div class="map-node"><small>DATA</small><b>CRM</b></div></div><div class="map-branch"></div><div class="map-row second"><div class="map-node"><small>ACTION</small><b>Email</b></div><span>←</span><div class="map-node"><small>LOGIC</small><b>Route</b></div><span>→</span><div class="map-node"><small>ACTION</small><b>Follow-up</b></div></div></div>
+</section>
+
+<section class="v4section project-section">
+ <div class="section-kicker"><span>04</span><div class="eyebrow">REAL WORK</div></div>
+ <div class="section-title-row"><div><h2>Automation we've built.</h2><p class="section-sub">A clearer look at the kinds of connected systems DNYAUTOMATED builds for real business processes.</p></div><a class="ghost" href="{% url 'case_studies' %}">View case studies</a></div>
+ {% if featured %}
+ <div class="project-showcase">{% for c in featured %}<a href="{% url 'case_detail' c.slug %}" class="project-item"><div class="project-screen">{% if c.image %}<img src="{{c.image.url}}" alt="{{c.title}} screenshot" loading="lazy">{% else %}<div class="screen-empty"><span>DNY</span><b>Project screenshot</b><small>Add your approved screenshot from admin</small></div>{% endif %}</div><div class="project-meta"><small>CASE STUDY</small><h3>{% if c.confidential %}Confidential Business Automation{% else %}{{c.title}}{% endif %}</h3><p>{{c.summary}}</p><b>View project →</b></div></a>{% endfor %}</div>
+ {% else %}
+ <div class="project-visual-demo"><img src="{% static 'agency/img/project-showcase.png' %}" alt="DNYAUTOMATED invoice document automation and business operations system showcase" loading="lazy"></div>
+ <div class="project-demo-actions"><a class="primary" href="{% url 'case_studies' %}">Explore Case Studies →</a><p>Demo presentation. Replace with your approved real project screenshots from the admin when ready.</p></div>
+ <div class="inline-services" aria-label="DNYAUTOMATED services">
+  <span class="inline-services-label">OUR SERVICES</span>
+  <a href="{% url 'service_detail' 'business-automation' %}"><b>AI Automation</b><small>Automate repetitive work</small></a>
+  <a href="{% url 'service_detail' 'ai-agents' %}"><b>AI Agents & Chatbots</b><small>Smart business assistants</small></a>
+  <a href="{% url 'service_detail' 'n8n' %}"><b>n8n Workflows</b><small>Connect your tools</small></a>
+  <a href="{% url 'service_detail' 'custom-software' %}"><b>Custom Software</b><small>Purpose-built systems</small></a>
+  <a href="{% url 'service_detail' 'wordpress' %}"><b>WordPress</b><small>Business websites</small></a>
+  <a class="all-services" href="{% url 'services' %}">All services →</a>
+ </div>
+ {% endif %}
+</section>
+
+<section class="lab-band"><div><div class="eyebrow">DNY AUTOMATION LAB</div><h2>Explore what automation could look like before we build it.</h2><p>Describe a task, estimate manual effort or assemble a sample workflow using interactive tools.</p></div><div class="lab-links"><a href="{% url 'lab' %}"><span>01</span>Automation Finder<b>↗</b></a><a href="{% url 'lab' %}"><span>02</span>ROI Estimator<b>↗</b></a><a href="{% url 'lab' %}"><span>03</span>Workflow Builder<b>↗</b></a></div></section>
+
+<section class="v4section finder-v4"><div><div class="section-kicker"><span>04</span><div class="eyebrow">QUICK AUTOMATION FINDER</div></div><h2>What does your team keep doing manually?</h2><p>Describe one repetitive task. We'll turn it into a simple workflow direction.</p></div><div class="finder-panel"><textarea id="quickTask" rows="4" placeholder="Example: Every invoice is manually copied into a spreadsheet..."></textarea><div class="finder-actions"><button class="btn" type="button" onclick="quickAutomate()">Suggest a workflow</button><span>Demo guidance · no sensitive data</span></div><div class="result" id="quickResult">Your suggested workflow will appear here.</div></div></section>
+
+<section class="v4section industries-v4"><div class="section-kicker"><span>05</span><div class="eyebrow">INDUSTRIES</div></div><div class="section-title-row"><h2>Different businesses. Different workflows.</h2><a class="ghost" href="{% url 'industries' %}">Explore industries</a></div><div class="industry-list">{% for i in industries_data %}<a href="{% url 'industries' %}"><span>0{{forloop.counter}}</span><b>{{i.0}}</b><em>→</em></a>{% endfor %}</div></section>
+
+<section class="v4section method-v4"><div class="method-intro"><div class="section-kicker"><span>06</span><div class="eyebrow">HOW WE BUILD</div></div><h2>Clear from discovery to deployment.</h2><p>We define the process before choosing tools, then build, test and hand over a system your team can operate.</p><a class="btn" href="{% url 'booking' %}?source=home-method">Book a Consultation</a></div><div class="method-list"><div><span>01</span><b>Discovery</b><p>Goals, bottlenecks and current tools.</p></div><div><span>02</span><b>Process design</b><p>Data, decisions, exceptions and handoffs.</p></div><div><span>03</span><b>Build & integrate</b><p>Automation, software and APIs.</p></div><div><span>04</span><b>Test & deploy</b><p>Failure paths, production setup and handover.</p></div><div><span>05</span><b>Support</b><p>Monitoring, fixes and improvements when required.</p></div></div></section>
+
+<section class="v4section why-v4"><div class="section-kicker"><span>07</span><div class="eyebrow">WHY DNYAUTOMATED</div></div><div class="why-grid"><div><h2>Business-process first.</h2><p>Tools change. A well-designed process is what makes automation useful.</p></div><div class="why-points"><div><b>01</b><span><strong>Custom where it matters</strong><small>Use off-the-shelf tools where practical and custom code where control is needed.</small></span></div><div><b>02</b><span><strong>Connected, not isolated</strong><small>Workflows designed around the systems your business already uses.</small></span></div><div><b>03</b><span><strong>Built for handover</strong><small>Clear deployment, documentation and support options.</small></span></div></div></div></section>
+
+<section class="v4section faq faq-v4"><div class="section-kicker"><span>08</span><div class="eyebrow">FAQ</div></div><h2>Before we build.</h2><details><summary>What can DNYAUTOMATED automate?</summary><p>Repetitive, rules-based or data-heavy processes across sales, operations, documents, reporting, integrations and customer workflows.</p></details><details><summary>Do all projects need AI?</summary><p>No. AI is used where it adds value. Many reliable automations are better handled with deterministic rules and integrations.</p></details><details><summary>Will I need monthly subscriptions?</summary><p>Custom development can be one-time, while hosting, AI APIs, third-party tools and optional maintenance may have recurring costs.</p></details><details><summary>Can you work with our existing tools?</summary><p>Yes. The project starts by mapping your current process and systems, then identifying what should be connected, replaced or left unchanged.</p></details></section>
+
+<section class="final-v4"><div><div class="eyebrow">START WITH THE PROCESS</div><h2>Tell us what your team keeps doing manually.</h2><p>We'll map the workflow and identify where automation or custom software can help.</p></div><div class="actions"><a class="btn light" href="{% url 'audit' %}?source=home-final">Get Free Audit</a><a class="ghost light" href="{% url 'quote' %}?source=home-final">Request Custom Quote</a></div></section>
+{% endblock %}

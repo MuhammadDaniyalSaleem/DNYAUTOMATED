@@ -1,0 +1,11 @@
+Hi {{ lead.name }},
+
+Thanks for contacting DNYAUTOMATED. We received your {{ kind_label|lower }} request.
+
+Reference: {{ lead.reference }}
+Service: {{ lead.service|default:"Not specified" }}
+
+Keep the reference number for follow-up. We will review the details you submitted and respond using the contact information you provided.
+
+DNYAUTOMATED
+Digital Neural Yield

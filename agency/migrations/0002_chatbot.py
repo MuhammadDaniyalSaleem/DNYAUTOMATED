@@ -1,0 +1,11 @@
+from django.db import migrations, models
+import django.db.models.deletion
+import uuid
+
+class Migration(migrations.Migration):
+    dependencies=[('agency','0001_initial')]
+    operations=[
+        migrations.CreateModel(name='ChatbotSetting',fields=[('id',models.BigAutoField(auto_created=True,primary_key=True,serialize=False,verbose_name='ID')),('bot_name',models.CharField(default='DNY AI Assistant',max_length=80)),('welcome_message',models.TextField(default='Hi! I can help you choose the right automation, AI or software service. What would you like to improve?')),('business_summary',models.TextField(blank=True,default='DNYAUTOMATED provides AI agents, business automation, n8n workflows, Python automation, API integrations, document AI, custom software and WordPress solutions.')),('whatsapp_number',models.CharField(blank=True,max_length=40)),('is_active',models.BooleanField(default=True)),('updated_at',models.DateTimeField(auto_now=True))]),
+        migrations.CreateModel(name='ChatSession',fields=[('id',models.BigAutoField(auto_created=True,primary_key=True,serialize=False,verbose_name='ID')),('session_key',models.UUIDField(default=uuid.uuid4,editable=False,unique=True)),('visitor_name',models.CharField(blank=True,max_length=120)),('visitor_email',models.EmailField(blank=True,max_length=254)),('visitor_phone',models.CharField(blank=True,max_length=40)),('language',models.CharField(default='auto',max_length=20)),('started_at',models.DateTimeField(auto_now_add=True)),('updated_at',models.DateTimeField(auto_now=True)),('is_closed',models.BooleanField(default=False)),('lead',models.ForeignKey(blank=True,null=True,on_delete=django.db.models.deletion.SET_NULL,related_name='chat_sessions',to='agency.lead'))]),
+        migrations.CreateModel(name='ChatMessage',fields=[('id',models.BigAutoField(auto_created=True,primary_key=True,serialize=False,verbose_name='ID')),('role',models.CharField(choices=[('user','User'),('assistant','Assistant')],max_length=12)),('content',models.TextField()),('created_at',models.DateTimeField(auto_now_add=True)),('session',models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,related_name='messages',to='agency.chatsession'))],options={'ordering':['created_at']}),
+    ]

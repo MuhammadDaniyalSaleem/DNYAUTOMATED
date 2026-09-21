@@ -1,0 +1,25 @@
+{% extends 'agency/base.html' %}
+{% block title %}Solutions — DNYAUTOMATED{% endblock %}
+{% block content %}
+<section class="pagehero solutions-hero">
+  <div class="eyebrow">SOLUTIONS</div>
+  <h1>Automation solutions built around <span>real business work.</span></h1>
+  <p>Choose the outcome you need. We map the process, connect the right systems and build a workflow your team can actually use.</p>
+  <div class="actions"><a class="btn" href="{% url 'audit' %}?source=solutions">Get a Free Automation Audit →</a><a class="ghost" href="{% url 'services' %}">Explore Services</a></div>
+</section>
+<section class="section solutions-section">
+  <div class="solutions-intro"><div><div class="eyebrow">WHAT WE SOLVE</div><h2>From repetitive tasks to connected operations.</h2></div><p>Each solution starts with the bottleneck, then combines automation, AI, APIs and custom software only where they make sense.</p></div>
+  <div class="solution-grid">
+  {% for x in solutions_data %}
+    <article class="solution-card">
+      <div class="solution-top"><span class="solution-number">0{{forloop.counter}}</span><span class="solution-tag">BUSINESS WORKFLOW</span></div>
+      <h2>{{x.0}}</h2>
+      <p>{{x.1}}</p>
+      <div class="solution-flow"><span>Input</span><i>→</i><span>Automation</span><i>→</i><span>Outcome</span></div>
+      <a class="solution-link" href="{% url 'audit' %}?service={{x.0|urlencode}}">Automate this process →</a>
+    </article>
+  {% endfor %}
+  </div>
+</section>
+<section class="solutions-cta"><div><div class="eyebrow">NOT SURE WHERE TO START?</div><h2>Show us the manual process.</h2><p>Tell us what your team repeats every day and we’ll help map the right automation direction.</p></div><a class="btn" href="{% url 'audit' %}?source=solutions-bottom">Start Free Audit →</a></section>
+{% endblock %}

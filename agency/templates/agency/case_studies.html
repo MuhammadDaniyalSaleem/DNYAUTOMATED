@@ -1,0 +1,35 @@
+{% extends 'agency/base.html' %}
+{% block title %}Case Studies & Real Work — DNYAUTOMATED{% endblock %}
+{% block content %}
+<section class="pagehero case-hero-v410">
+  <div class="eyebrow">CASE STUDIES • REAL WORK • CONCEPT DEMOS</div>
+  <h1>Systems built around <span>real business workflows.</span></h1>
+  <p>Selected DNYAUTOMATED work plus clearly labelled concept demonstrations. Client-sensitive work can be anonymized.</p>
+  <div class="actions"><a class="btn" href="#real-work">Explore projects →</a><a class="ghost" href="{% url 'audit' %}">Start a Free Audit</a></div>
+</section>
+
+<section class="section case-v410" id="real-work">
+  <div class="case-v410-head"><div><div class="eyebrow">FEATURED REAL WORK</div><h2>Automation already built.</h2></div><p>Practical systems for document processing, operations and connected business workflows.</p></div>
+
+  <article class="case-v410-project">
+    <div class="case-v410-copy"><span class="case-badge real">REAL PROJECT</span><div class="eyebrow">DOCUMENT AUTOMATION</div><h2>Invoice & Document Automation</h2><p>An invoice-processing workflow designed to reduce repetitive data entry and keep documents, reviewed data and business records connected.</p><div class="case-flow-v410"><span>Upload</span><i>→</i><span>OCR</span><i>→</i><span>Review</span><i>→</i><span>Drive</span><i>→</i><span>Sheets</span></div><div class="case-points"><span>OCR extraction</span><span>Human review</span><span>Google Drive</span><span>Google Sheets</span></div><a class="btn small" href="{% url 'contact' %}">Discuss similar automation →</a></div>
+    <div class="case-ui invoice-ui"><div class="ui-top"><b>DNY</b><span>Invoice Processing</span><em>Processing</em></div><div class="ui-body"><aside>Dashboard<br><strong>Documents</strong><br>Review<br>Workflows<br>Reports</aside><main><div class="invoice-paper"><b>INVOICE</b><small>Invoice details</small><hr><small>Vendor</small><hr><small>Amount</small></div><div class="extract-panel"><b>Extracted Information</b><p>Vendor <span>Reviewed</span></p><p>Invoice No. <span>Captured</span></p><p>Amount <span>Verified</span></p><button>Approve & Route</button></div></main></div></div>
+  </article>
+
+  <article class="case-v410-project reverse">
+    <div class="case-v410-copy"><span class="case-badge real">REAL PROJECT</span><div class="eyebrow">CUSTOM SOFTWARE</div><h2>Business Operations System</h2><p>A management system structure for day-to-day business operations including sales, purchases, inventory, expenses, accounts and reporting.</p><div class="case-flow-v410"><span>Sales</span><i>→</i><span>Inventory</span><i>→</i><span>Expenses</span><i>→</i><span>Reports</span></div><div class="case-points"><span>Sales & purchases</span><span>Inventory tracking</span><span>Expenses</span><span>Reporting</span></div><a class="btn small" href="{% url 'contact' %}">Discuss custom software →</a></div>
+    <div class="case-ui ops-ui"><div class="ui-top"><b>DNY</b><span>Business Operations</span><em>Dashboard</em></div><div class="metric-row"><div><small>Total Sales</small><b>Overview</b></div><div><small>Orders</small><b>Live</b></div><div><small>Inventory</small><b>Tracked</b></div></div><div class="chart-demo"><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+  </article>
+
+  <div class="case-v410-head demo-head"><div><div class="eyebrow">CONCEPT DEMONSTRATIONS</div><h2>More workflows DNY can build.</h2></div><p>These examples are intentionally marked as demos. They show solution capability, not claimed client work or results.</p></div>
+  <div class="demo-case-grid">
+    <article><span class="case-badge demo">CONCEPT DEMO</span><div class="demo-icon">AI</div><h3>AI Lead Qualification</h3><p>Capture an enquiry, classify intent, route qualified leads and trigger a structured follow-up.</p><div class="mini-flow">Form → AI → CRM → Follow-up</div></article>
+    <article><span class="case-badge demo">CONCEPT DEMO</span><div class="demo-icon">HR</div><h3>Recruitment Workflow</h3><p>Organize applications, extract candidate information and coordinate review stages.</p><div class="mini-flow">CV → Extract → Review → Shortlist</div></article>
+    <article><span class="case-badge demo">CONCEPT DEMO</span><div class="demo-icon">API</div><h3>Connected Operations</h3><p>Connect forms, APIs, databases and notifications into one reliable workflow.</p><div class="mini-flow">Trigger → API → Database → Alert</div></article>
+  </div>
+
+  {% if cases %}<div class="case-v410-head admin-head"><div><div class="eyebrow">PROJECT LIBRARY</div><h2>Published case studies.</h2></div></div><div class="casecards">{% for c in cases %}<a class="casecard" href="{% url 'case_detail' c.slug %}"><div class="casevisual">{% if c.image %}<img src="{{c.image.url}}" alt="{{c.title}} screenshot" loading="lazy">{% else %}<div class="placeholder">PROJECT SCREENSHOT<br><small>Add through admin</small></div>{% endif %}</div><small>{{c.category}}</small><h2>{% if c.confidential %}Confidential Business Automation{% else %}{{c.title}}{% endif %}</h2><p>{{c.summary}}</p></a>{% endfor %}</div>{% endif %}
+</section>
+
+<section class="solutions-cta case-final-v410"><div><div class="eyebrow">YOUR WORKFLOW NEXT</div><h2>Have a process worth automating?</h2><p>Show us the manual process. We’ll map where automation, AI or custom software can fit.</p></div><div class="actions"><a class="btn" href="{% url 'audit' %}">Get Free Automation Audit</a><a class="ghost" href="{% url 'contact' %}">Discuss a Project</a></div></section>
+{% endblock %}

@@ -1,0 +1,1 @@
+{% extends 'agency/base.html' %}{% block content %}<section class="formwrap"><div><div class="eyebrow">CLIENT SUPPORT</div><h1>Create a request.</h1><p>Use this for bugs, change requests or project support.</p></div><form method="post" class="form">{% csrf_token %}{{form.as_p}}<button class="btn">Create ticket</button></form></section>{% endblock %}
